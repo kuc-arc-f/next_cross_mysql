@@ -61,8 +61,9 @@ https://github.com/kuc-arc-f/apollo_head_mysql
 https://github.com/kuc-arc-f/headless-3-mysql
 
 ***
-### Related : 
+### Blog: 
 
+https://zenn.dev/knaka0209/books/4ee53bad905ec2/viewer/b4562c
 
 ***
 
