@@ -51,5 +51,6 @@ const LibAuth = {
       throw new Error('Error , get_user');
     }        
   },
+
 }
 export default LibAuth;

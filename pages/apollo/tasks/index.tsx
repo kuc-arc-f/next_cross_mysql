@@ -34,13 +34,18 @@ class TasksIndex extends React.Component<IProps, IState> {
 //console.log(props);   
   }       
   async componentDidMount(){
+    const key = process.env.COOKIE_KEY_USER_ID;
+/*
+    if(LibCookie.get_cookie(key) === null){
+      location.href = '/login';
+    } 
+*/
     const items = await LibContent.get_items("tasks");
-console.log(items);      
     this.setState({items: items }) 
   }
   render() {
     const data = this.state.items;
-console.log(data);
+//console.log(data);
     return (
     <Layout>
     <div className="container py-4">

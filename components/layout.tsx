@@ -15,7 +15,6 @@ function Layout({ children }) {
       </script>      
     </Head>
     <Navibar />
-    <hr />
     {children}
     <br />
   </div>

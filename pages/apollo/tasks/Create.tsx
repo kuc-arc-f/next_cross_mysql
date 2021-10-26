@@ -11,12 +11,12 @@ interface IProps {
   apikey: string,
 }
 interface IState {
-  user_id: string,
+  user_id: number,
 }
 class TaskCreate extends React.Component<IProps, IState> {
   constructor(props) {
     super(props);
-    this.state = { user_id: "" };
+    this.state = { user_id: 0 };
   }
   async componentDidMount(){
   }
