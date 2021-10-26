@@ -15,6 +15,7 @@ interface IProps {
 }
 interface IState {
     items: any[],
+    user_id: number,
   }
 interface IObject {
   id: number,
@@ -30,17 +31,27 @@ class TasksIndex extends React.Component<IProps, IState> {
   }
   constructor(props){
     super(props)
-    this.state = { items: [] };
+    this.state = { items: [], user_id: 0 };
 //console.log(props);   
   }       
   async componentDidMount(){
     const key = process.env.COOKIE_KEY_USER_ID;
+    const valid = LibAuth.valid_login();
+console.log(valid);
+    let uid = 0;
+    if(valid){
+      uid = LibAuth.get_uid()
+console.log("uid=", uid);
+      this.setState({user_id: Number(uid) })
+
+    }
 /*
     if(LibCookie.get_cookie(key) === null){
       location.href = '/login';
     } 
 */
-    const items = await LibContent.get_items("tasks");
+    const items = await LibContent.get_items_uid("tasks", uid);
+console.log(items);
     this.setState({items: items }) 
   }
   render() {

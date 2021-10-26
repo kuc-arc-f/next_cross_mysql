@@ -20,14 +20,14 @@ const LibContent = {
   },
   get_items_uid: async function(content_name, user_id){
     try {
-      const site_id= process.env.MY_SITE_ID;
       const apikey= process.env.MY_API_KEY;
       const data = await client.query({
-        query: Content.get_query_contents_uid(site_id , content_name, user_id) ,
+        query: Content.get_query_contents_uid(apikey , content_name, user_id) ,
         fetchPolicy: "network-only"
       })
+//console.log(data);
       const item = LibApiFind.convert_items(data.data.contents_uid )
-      return item      
+      return item;      
     } catch (error) {
       alert("Error, get_items_uid")
       console.error(error);

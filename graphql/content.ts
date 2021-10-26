@@ -12,11 +12,11 @@ const content = {
     }
    `   
   },
-  get_query_contents_uid : function(site_id , content_name, user_id){
+  get_query_contents_uid : function(apikey , content_name, user_id){
     return gql`
     query {
-      contents_uid(site_id: "${site_id}" , content_name:"${content_name}",
-        user_id: "${user_id}" 
+      contents_uid(apikey: "${apikey}" , content_name:"${content_name}",
+        user_id: ${user_id} 
       ) {
         id
         name

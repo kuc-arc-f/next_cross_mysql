@@ -19,6 +19,14 @@ class TaskCreate extends React.Component<IProps, IState> {
     this.state = { user_id: 0 };
   }
   async componentDidMount(){
+    const key = process.env.COOKIE_KEY_USER_ID;
+    const valid = LibAuth.valid_login();
+console.log(valid);
+    if(valid){
+      const uid = LibAuth.get_uid()
+console.log("uid=", uid);
+      this.setState({user_id: Number(uid) })
+    }    
   }
   async clickHandler(){
     try {
@@ -29,7 +37,7 @@ class TaskCreate extends React.Component<IProps, IState> {
         title: title.value,
         content: content.value,
       }
-      const result = await LibContent.add_item("tasks", values, 0)
+      const result = await LibContent.add_item("tasks", values, this.state.user_id)
 console.log(result)
 //      var flash = {success:"Conmplete, save", error:""}
 //      await LibFlash.set_flash( this.state.user_id , flash)

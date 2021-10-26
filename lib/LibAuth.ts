@@ -1,18 +1,19 @@
 // LibAuth
 import LibCookie from '../lib/LibCookie'
 //
-//export default  {
 const LibAuth = {
-  valid_login: function(props){
+  valid_login: function(){
     try{
       let ret = true
       const key = process.env.COOKIE_KEY_USER_ID
       const user_id = LibCookie.get_cookie(key)
 //console.log(user_id)
+/*
       if(user_id == null){
         location.href ="/login";
         ret = false
       }      
+*/
       return ret
     } catch (e) {
       console.log(e);
@@ -21,13 +22,12 @@ const LibAuth = {
   },
   get_uid: function(){
     try{
-      let ret = ""
-//      const key = process.env.REACT_APP_COOKIE_USER_ID
+      let ret = 0
       const key = process.env.COOKIE_KEY_USER_ID
       const user_id = LibCookie.get_cookie(key)
 //console.log(user_id)
       if(user_id !== null){
-        ret = user_id
+        ret = Number(user_id);
       }      
       return ret
     } catch (e) {
